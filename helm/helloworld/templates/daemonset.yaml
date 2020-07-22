@@ -1,0 +1,18 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: helloworld
+spec:
+  selector:
+    matchLabels:
+      name: deamonset-example
+  template:
+    metadata:
+      labels:
+        name: deamonset-example
+    spec:
+      nodeSelector:
+        apptype: xavier-app #这里的xavier-app是apptype的值，也就是label
+      containers:  
+      - name: helloworld
+        image: harbor.internal.miivii.com:5000/test/helloworld@sha256:63a72d004208dd5306e07726b4b7aa2afa06be1d12f496654e29ead249fcd827
